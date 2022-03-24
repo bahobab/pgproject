@@ -14,11 +14,6 @@ export function Categories(props) {
       props.setSelectedCat(cats);  
     }
 
-    const handleFilter = () => {
-
-    }
-    
-
   return (
     <>
       <h3 style={{textTransform: 'uppercase'}}>All Categories</h3>

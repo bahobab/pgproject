@@ -1,80 +1,49 @@
 # React Product Gallery
 
-For this project, you will build a product gallery using React. The finished product should look visually similar to that of the provided mock ups as well as satisfy the requirements described the in the specs below.
- 
-- The project consists of 2 primary screens: "Product Listing" and "Product Details".
-- The required data is provided for you. See [`src/data.js`](src/data.js).
-- You will not have to implement any HTTP requests to fetch the data. You may read the data directly from `src/data.js`.
-- The project is designed to be completable in roughly 4 hours.
-- Use [Font Awesome](http://fontawesome.io/examples/) for any icons you may need. The CSS is already present on the page.
+This is my approach to the challenge.
+For sure there are many features to be added/implemented.
 
+If time permitted, I Could have added:
+- Test for category checkbox to test the category selection/deselection
+- Test for the modal showing/closing
+- Loading spinner of indication for the Categories and the Products components
+- etc..
 
-## Instructions
+# Performance issues
 
-- Clone this repo via `git clone git@github.com:practicegenius/react-product-gallery.git`
-- `cd react-product-gallery` and install dependencies via `yarn install`
+I wanted to call your attention on the implementation for category selection that updates the products list.
+It does not look efficient since the time complexity for getting the products by category seems to like N*M which is the of the quadratic order ([].filter inside [].forEch will create this situation):
+
+N: size of caetegories array
+M: size of products array
+
+When numbers scale the performance of the rendering the component will take a hit.
+
+So this calls for perfomance optimiation with different algorithm to build the products list when checking the categories.
+
+The code fragment:
+
+`
+React.useEffect(() => {
+    if (checkedCat.length === 0) {
+      setDisplayProducts(products);
+      return
+    }
+    let selectedProds = [];
+    checkedCat.forEach(catId => {
+      const  filteredProds = products.filter(prod => prod.categoryId === Number(catId));
+      selectedProds = [...selectedProds, ...filteredProds];
+    })
+    setDisplayProducts(selectedProds);
+  }, [checkedCat]);
+
+`
+
+Thank you
+
+# How to run
+
+- Clone this repo via `git clone https://github.com/bahobab/pgproject`
+- `cd pgproject` and install dependencies via `yarn install`
 - Execute `yarn start` to begin the development server.
 - You should be able to reach the project at http://localhost:3000/
-
-_*[`yarn`](https://yarnpkg.com) is interchangeable with [`npm`](https://www.npmjs.com/) throughout these instructions_
-
-_The project structure/boilerplate is based around [create-react-app](https://github.com/facebookincubator/create-react-app#create-react-app).
- This means you don't have to worry about setting up any dependencies, build steps, boilerplate, etc... Everything just works right out of the box including ES6+ syntax among many other modern development conveniences and features.  For additional information specific to `create-react-app` see [the docs](https://github.com/facebookincubator/create-react-app#create-react-app-)._
-
-## Screen 01: Product Listing
-
-_This screen displays a listing of products along with various search and filter controls._
-
-![Screen: Gallery](prototype/Screen%20Gallery.png)
-
-**Display Products**
-
-Display the appropriate products based on the current category, search text, and price filter.
-
-Each product in the listing should be clickable to view the Product Details screen for that product.
-
-**Search Products**
-
-Search products by name via the text search input.
-
-**View Products by Category**
-
-Products are viewed by category. The categories should be listed in the sidebar.
-
-There will always be an active category. Clicking a category in the sidebar should update the active category.
-
-**Filter by Price**
- 
-Filter products by min price and max price. Both fields are optional.
-
-## Screen 02: Product Details
-
-_This screen displays more detailed information about a single product._
-
-![Screen: Product Details](prototype/Screen%20Product%20Details.png)
-
-**Modal**
-
-The product details view is displayed within a modal. The modal should be closable by clicking the "X" in the top right corner of the modal.
-
-## Utilizing the Prototype
-
-See the [interactive prototype](prototype/index.html) to view and inspect the design. This prototype is generated from the design files, so the HTML itself won't be much use to you. Feel free to use it for easily inspecting sizes, spacing, and colors.
-
-To access the prototype, navigate to your project directory and open the `prototype/index.html` in your browser. Examples:
-
-* From the terminal: `open prototype/index.html`
-* From the file browser: Drag and drop `prototype/index.html` onto your browser.
-
-![mockup/prototype](prototype/prototype-screenshot.png)
-
-### _*Bonus Feature_
-
-Implement one bonus feature of your choosing. _Feel free to be creative and come up with your own_ or choose from the following:
-- Add sorting options (e.g. sort by price lowest/highest).
-- Add an "Add to Cart" button and display sub-total in the header.
-- Paginate items (e.g. 8 per page).
-- Add test coverage.
-- Add a "Related Products" section to the Product Details page.
-- Use React Router where you deem appropriate.
-- Deploy the app (see https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment)

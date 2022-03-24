@@ -21,16 +21,20 @@ export default function App() {
       const  filteredProds = products.filter(prod => prod.categoryId === Number(catId));
       selectedProds = [...selectedProds, ...filteredProds];
     })
-    setDisplayProducts(selectedProds)
-  }, [checkedCat])
+    setDisplayProducts(selectedProds);
+  }, [checkedCat]);
+
+  // React.useEffect(() => {
+  //   handlePriceFilter()
+  // }, [displayProducts]);
 
   const handlePriceFilter = () => {
-    const miniProd = displayProducts.sort((prod1, prod2) => prod1.price - prod2.price)
-    setFilteredPrice({min: miniProd [0].price, max: miniProd[miniProd.length - 1].price})
+    const miniProd = [...displayProducts].sort((prod1, prod2) => prod1.price - prod2.price)
+    setFilteredPrice({min: miniProd[0].price, max: miniProd[miniProd.length - 1].price})
   }
   
   const handlePriceSort = () => {
-    const sortedProd = displayProducts.sort((prod1, prod2) => prod1.price - prod2.price)
+    const sortedProd = [...displayProducts].sort((prod1, prod2) => prod1.price - prod2.price)
     setDisplayProducts(sortedProd)
   }
 
