@@ -23,8 +23,7 @@ So this calls for perfomance optimiation with different algorithm to build the p
 
 The code fragment:
 
-`
-React.useEffect(() => {
+'React.useEffect(() => {
     if (checkedCat.length === 0) {
       setDisplayProducts(products);
       return
@@ -35,9 +34,7 @@ React.useEffect(() => {
       selectedProds = [...selectedProds, ...filteredProds];
     })
     setDisplayProducts(selectedProds);
-  }, [checkedCat]);
-
-`
+  }, [checkedCat]);`
 
 Thank you
 
