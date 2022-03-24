@@ -2,6 +2,7 @@
 import React from 'react';
 
 export function Products({items, search}) {
+  console.log({items})
   return (
     <>
       <h1>Creams &amp; Gels</h1>
