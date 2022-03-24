@@ -172,10 +172,26 @@ body {
 .min-max {
   padding: 3px;
   margin: 2px;
-  border: 1px solid black;
+  border: 1px solid #555;
 }
 
-.filter-button {
+.filter-button,
+.sort-button {
+  margin-top: 7px;
   width: 90px;
-  height: 40px;
+  height: 45px;
+  border: none;
+  border-radius: 5PX;
+  background-color: orange;
+  color: #555;
+  font-size: medium;
+  font-weight: bold;
+  outline: transparent;
+  cursor: pointer;
+}
+
+.filter-button:hover,
+.sort-button:hover {
+  color: orange;
+  background-color: #555;
 }

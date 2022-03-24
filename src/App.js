@@ -28,6 +28,11 @@ export default function App() {
     const miniProd = displayProducts.sort((prod1, prod2) => prod1.price - prod2.price)
     setFilteredPrice({min: miniProd [0].price, max: miniProd[miniProd.length - 1].price})
   }
+  
+  const handlePriceSort = () => {
+    const sortedProd = displayProducts.sort((prod1, prod2) => prod1.price - prod2.price)
+    setDisplayProducts(sortedProd)
+  }
 
   return (
     <>
@@ -47,6 +52,11 @@ export default function App() {
               </div>
             }
             <button className='filter-button' onClick={handlePriceFilter}>Go</button>
+          </div>
+          <div className="sort">
+            <h4>Sort By Price</h4>
+            Low to High
+            <button className='sort-button' onClick={handlePriceSort}>Sort By Price</button>
           </div>
         </div>
         <div className="content">
