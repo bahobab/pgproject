@@ -152,3 +152,30 @@ body {
 .modal__price {
   color: #f8cb00;
 }
+
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.minmax-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.min-max {
+  padding: 3px;
+  margin: 2px;
+  border: 1px solid black;
+}
+
+.filter-button {
+  width: 90px;
+  height: 40px;
+}

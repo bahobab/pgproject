@@ -13,6 +13,10 @@ export function Categories(props) {
     const cats = Object.keys(selectedCat).filter((k) => selectedCat[k] === true)
       props.setSelectedCat(cats);  
     }
+
+    const handleFilter = () => {
+
+    }
     
 
   return (
