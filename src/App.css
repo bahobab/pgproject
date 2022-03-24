@@ -71,6 +71,10 @@ body {
   box-shadow: 0 4px 14px 7px rgba(121, 121, 121, 0.05);
 }
 
+.product:hover {
+  cursor: pointer;
+}
+
 .product__price {
   color: #f8cb00;
 }
