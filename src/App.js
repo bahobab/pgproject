@@ -40,7 +40,7 @@ export default function App() {
       <main className="main">
         <div className="sidebar">
           <Categories items={categories} setSelectedCat={setChekedCat} />
-          <div>
+          <div className='filter'>
             <h4>Filter By Price</h4>
             Min /Max
             {
